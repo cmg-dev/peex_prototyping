@@ -1,8 +1,14 @@
 defmodule Peex.MkITest do
-  use ExUnit.Case
-  doctest Peex.MkI
+  use ExUnit.Case, async: true
 
-  test "greets the world" do
-    assert Peex.MkI.hello() == :world
+  setup do
+    {:ok, server_pid} = MkISupervisor.start_link([])
+    {:ok, server: server_pid}
+  end
+
+  test "supervisor restarts GenServer after it dies" do
+    token = [1002, 0]
+    assert :ok == MkIStartEvent.start(:MkI_startevent_1, token)
+
   end
 end
