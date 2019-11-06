@@ -18,7 +18,7 @@ defmodule MkIEndEvent do
   # Server - API                              #
   # i.e. Server calls the following functions #
   # ----------------------------------------- #
-  def handle_cast({:on_enter, token}, state) do
+  def handle_cast({:on_enter, _token}, state) do
     IO.puts 'End Event reached'
     {:noreply, state}
   end

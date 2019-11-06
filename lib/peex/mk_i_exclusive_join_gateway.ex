@@ -19,9 +19,12 @@ defmodule MkIExclusiveJoinGateway do
   # i.e. Server calls the following functions #
   # ----------------------------------------- #
   def handle_cast({:on_enter, token}, state) do
-    next_node_name = state
+
+    [next_node_name] = state
+
+    IO.puts "Join Gateway reached"
+
     try_call(next_node_name, {:on_enter, token})
-    # }}}
 
     {:noreply, state}
   end

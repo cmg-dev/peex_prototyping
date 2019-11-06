@@ -22,7 +22,7 @@ defmodule MkISupervisor do
       },
       %{
         id: :MkI_splitgateway_1,
-        start: {MkIExclusiveSplitGateway, :start_link, [[:MkI_scripttask_2,:MkI_joingateway_1], :MkI_splitgateway_1]}
+        start: {MkIExclusiveSplitGateway, :start_link, [[:MkI_joingateway_1, :MkI_scripttask_2], :MkI_splitgateway_1]}
       },
       %{
         id: :MkI_joingateway_1,
@@ -30,7 +30,7 @@ defmodule MkISupervisor do
       },
       %{
         id: :MkI_servicetask_1,
-        start: {MkIExclusiveJoinGateway, :start_link, [[:MkI_splitgateway_1], :MkI_servicetask_1]}
+        start: {MkIServiceTask, :start_link, [[:MkI_splitgateway_1], :MkI_servicetask_1]}
       },
       %{
         id: :MkI_scripttask_1,

@@ -5,10 +5,10 @@ defmodule MkIServiceTask do
   # Client - API                              #
   # i.e. Client calls the following functions #
   # ----------------------------------------- #
-  def start_link([next_node_name, config], flow_node_id) do
+  def start_link(state, flow_node_id) do
     GenServer.start_link(
       __MODULE__,
-      [next_node_name, config],
+      state,
       name: global_server_name(flow_node_id))
   end
 
@@ -21,17 +21,16 @@ defmodule MkIServiceTask do
   # i.e. Server calls the following functions #
   # ----------------------------------------- #
   def handle_cast({:on_enter, token}, state) do
-    [next_node_name, config] = state
-    [meta_instance_id, _] = token 
 
-    # {{{ do some work
+    IO.puts "Service Task reached"
+
+    [next_node_name] = state
+    [meta_instance_id] = token
+
     IO.puts "my id is: #{meta_instance_id}"
-    # }}}
 
-    new_token = [token, "abc"]
+    try_call(next_node_name, {:on_enter, token})
 
-    try_call(next_node_name, {:on_enter, new_token})
-    
     {:noreply, state}
   end
 

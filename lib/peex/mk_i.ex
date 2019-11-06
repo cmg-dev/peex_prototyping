@@ -23,7 +23,7 @@ defmodule Peex.MkI do
 
     # build_supervisor(actors_needed, actor_relation)
   end
-  
+
   @doc """
   Hello world.
 
@@ -34,21 +34,10 @@ defmodule Peex.MkI do
 
   """
   def hello_world do
-    # method = 'POST'
-    # url = "http://localhost:8000"
-    # params = ""
+    {:ok, server_pid} = MkISupervisor.start_link([])
+    {:ok, server: server_pid}
 
-    # token = {}
-
-    # start_event_name = "default"
-    # service_task_config = [method, url, params]
-
-    # result = token
-    #   |> start_event(start_event_name)
-    #   |> service_task(service_task_config)
-    #   |> script_task()
-    #   |> end_event()    method = 'POST'
-
-    # IO.puts result
+    token = [1002]
+    MkIStartEvent.start(:MkI_startevent_1, token)
   end
 end

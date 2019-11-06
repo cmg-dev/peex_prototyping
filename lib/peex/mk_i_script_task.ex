@@ -20,16 +20,12 @@ defmodule MkIScriptTask do
   # i.e. Server calls the following functions #
   # ----------------------------------------- #
   def handle_cast({:on_enter, token}, state) do
-    [next_node_name, config] = state
-    [meta_instance_id, _] = token 
+    [next_node_name, _config] = state
 
     IO.puts 'Script Task reached'
-    # {{{ do some work
-    # eval(...)
-    # }}}
 
     try_call(next_node_name, {:on_enter, token})
-    
+
     {:noreply, state}
   end
 

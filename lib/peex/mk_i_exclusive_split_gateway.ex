@@ -9,16 +9,20 @@ defmodule MkIExclusiveSplitGateway do
 
   # nodes_and_expressions = %{:nodeA: expression, :nodeB: expression }
 
-  def start_link([nodes_and_expressions, config], flow_node_id) do
+  def start_link(nodes, flow_node_id) do
+
     condition = 0
+
+    state = [nodes, condition]
+
     GenServer.start_link(
       __MODULE__,
-      [nodes_and_expressions, config, condition],
+      state,
       name: global_server_name(flow_node_id))
   end
 
-  def init(init_arg) do
-    {:ok, init_arg}
+  def init(state) do
+    {:ok, state}
   end
 
   # ----------------------------------------- #
@@ -26,9 +30,9 @@ defmodule MkIExclusiveSplitGateway do
   # i.e. Server calls the following functions #
   # ----------------------------------------- #
   def handle_cast({:on_enter, token}, state) do
-    [[evenNode, oddNode], config, condition] = state
-    [_, result] = token 
+    [[evenNode, oddNode], condition] = state
 
+    IO.puts "Split Gateway reached"
     # {{{ do some work
     # implement real condition check
     case Integer.is_even(condition) do
@@ -39,7 +43,7 @@ defmodule MkIExclusiveSplitGateway do
     end
     # }}}
 
-    {:noreply, [[evenNode, oddNode], config, condition + 1]}
+    {:noreply, [[evenNode, oddNode], condition + 1]}
   end
 
   defp global_server_name(server_name) do
