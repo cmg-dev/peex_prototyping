@@ -1,4 +1,7 @@
 defmodule Peex.MkI do
+
+  require Logger
+
   @moduledoc """
   Documentation for Peex.MkI.
   """
@@ -34,6 +37,7 @@ defmodule Peex.MkI do
 
   """
   def hello_world do
+    Logger.debug "Starting"
     {:ok, server_pid} = MkISupervisor.start_link([])
     {:ok, server: server_pid}
 

@@ -1,6 +1,7 @@
 defmodule MkIServiceTask do
   use GenServer
 
+  require Logger
   # ----------------------------------------- #
   # Client - API                              #
   # i.e. Client calls the following functions #
@@ -22,13 +23,14 @@ defmodule MkIServiceTask do
   # ----------------------------------------- #
   def handle_cast({:on_enter, token}, state) do
 
-    IO.puts "Service Task reached"
 
     [next_node_name] = state
     [meta_instance_id] = token
 
-    IO.puts "my id is: #{meta_instance_id}"
+    Logger.debug "#{__MODULE__} My ID is: #{meta_instance_id}"
 
+    Logger.debug "#{__MODULE__} Starting next -> #{next_node_name}"
+  
     try_call(next_node_name, {:on_enter, token})
 
     {:noreply, state}

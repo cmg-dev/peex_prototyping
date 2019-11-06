@@ -2,6 +2,7 @@ defmodule MkIExclusiveSplitGateway do
   use GenServer
 
   require Integer
+  require Logger
   # ----------------------------------------- #
   # Client - API                              #
   # i.e. Client calls the following functions #
@@ -32,13 +33,14 @@ defmodule MkIExclusiveSplitGateway do
   def handle_cast({:on_enter, token}, state) do
     [[evenNode, oddNode], condition] = state
 
-    IO.puts "Split Gateway reached"
     # {{{ do some work
     # implement real condition check
     case Integer.is_even(condition) do
       :true ->
+        Logger.debug "#{__MODULE__} Starting next -> #{evenNode}"
         try_call(evenNode, {:on_enter, token})
       :false ->
+        Logger.debug "#{__MODULE__} Starting next -> #{oddNode}"
         try_call(oddNode, {:on_enter, token})
     end
     # }}}

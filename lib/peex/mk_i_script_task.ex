@@ -1,6 +1,7 @@
 defmodule MkIScriptTask do
   use GenServer
 
+  require Logger
   # ----------------------------------------- #
   # Client - API                              #
   # i.e. Client calls the following functions #
@@ -22,7 +23,7 @@ defmodule MkIScriptTask do
   def handle_cast({:on_enter, token}, state) do
     [next_node_name, _config] = state
 
-    IO.puts 'Script Task reached'
+    Logger.debug "#{__MODULE__} Starting next -> #{next_node_name}"
 
     try_call(next_node_name, {:on_enter, token})
 

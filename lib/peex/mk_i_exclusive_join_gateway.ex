@@ -1,7 +1,7 @@
 defmodule MkIExclusiveJoinGateway do
   use GenServer
 
-  import Integer
+  require Logger
   # ----------------------------------------- #
   # Client - API                              #
   # i.e. Client calls the following functions #
@@ -22,7 +22,7 @@ defmodule MkIExclusiveJoinGateway do
 
     [next_node_name] = state
 
-    IO.puts "Join Gateway reached"
+    Logger.debug "#{__MODULE__} Starting next -> #{next_node_name}"
 
     try_call(next_node_name, {:on_enter, token})
 

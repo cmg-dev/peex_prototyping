@@ -2,6 +2,8 @@ defmodule MkISupervisor do
   # Automatically defines child_spec/1
   use Supervisor
 
+  require Logger
+
   def start_link(token) do
     Supervisor.start_link(__MODULE__, token, name: __MODULE__)
   end
@@ -45,4 +47,5 @@ defmodule MkISupervisor do
     # Now we start the supervisor with the children and a strategy
     Supervisor.init(children, strategy: :one_for_one)
   end
+
 end

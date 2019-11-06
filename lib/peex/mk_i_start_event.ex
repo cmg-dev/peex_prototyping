@@ -27,11 +27,11 @@ defmodule MkIStartEvent do
   # i.e. Server calls the following functions #
   # ----------------------------------------- #
   def handle_cast({:on_enter, token}, state) do
+    Logger.debug "Start Event reached"
 
     [next_node_name] = state
 
-    IO.puts "Start Event reached"
-    # IO.puts "Start Event reached #{next_node_name}"
+    Logger.debug "#{__MODULE__} Starting next -> #{next_node_name}"
 
     try_call(next_node_name, {:on_enter, token})
 
