@@ -1,10 +1,12 @@
-defmodule Peex.MkITest do
+
+defmodule Peex.Example.Test do
   use ExUnit.Case, async: true
 
   require Logger
 
   setup do
-    {:ok, server_pid} = MkISupervisor.start_link([])
+
+    {:ok, server_pid} = Peex.Example.ProcessSupervisor.start_link([])
 
     :sys.statistics(server_pid, true)
     :sys.trace(server_pid, true)
@@ -13,11 +15,13 @@ defmodule Peex.MkITest do
   end
 
   test "supervisor restarts GenServer after it dies" do
+
     Logger.debug "Starting test #1"
-    token = [1002]
-    assert :ok == MkIStartEvent.start(:MkI_startevent_1, token)
+
+    token = %{instance_id: 100, payload: nil}
+
+    assert :ok == Peex.Core.StartEvent.start(:StartEvent_1, token)
 
     :timer.sleep(500)
-
   end
 end
