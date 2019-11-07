@@ -12,10 +12,11 @@ defmodule Peex.Core.ServiceTask do
   def handle_cast({:on_enter, token}, state) do
 
     next_node_id = state.next_node_id
-    %{:instance_id => instance_id, :payload => payload} = token
 
-    updated_counter = payload.counter + 1
-    updated_payload = %{counter: updated_counter}
+    module = "Elixir.#{state.module}" |> String.to_atom
+    function = state.function |> String.to_atom
+
+    updated_payload = apply(module, function, [token])
 
     new_token = Map.put(token, :payload, updated_payload)
 

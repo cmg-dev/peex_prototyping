@@ -14,7 +14,11 @@ defmodule Peex.Example.ProcessSupervisor do
     start_event_1_config = %{next_node_id: :ScriptTask_1}
     end_event_1_config = []
 
-    service_task_1_config = %{next_node_id: :SplitGateway_1}
+    service_task_1_config = %{
+      next_node_id: :SplitGateway_1,
+      module: "Peex.Example.Service",
+      function: "increment_counter"
+    }
 
     script_task_1_config = %{
       next_node_id: :JoinGateway_1,
