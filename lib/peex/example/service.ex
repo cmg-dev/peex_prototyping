@@ -5,6 +5,8 @@ defmodule Peex.Example.Service do
 
     current_value = token.payload.counter
 
-    %{ counter: current_value + 1 }
+    new_payload = %{ counter: current_value + 1 }
+
+    new_payload
   end
 end

@@ -12,11 +12,24 @@ defmodule Peex.Core.ServiceTask do
   def handle_cast({:on_enter, token}, state) do
 
     next_node_id = state.next_node_id
+    topic = state.topic
 
-    module = "Elixir.#{state.module}" |> String.to_atom
-    function = state.function |> String.to_atom
+    namespaces = topic
+      |> to_string()
+      |> String.split(".")
 
-    updated_payload = apply(module, function, [token])
+    module = namespaces
+      |> Enum.drop(-1)
+      |> Enum.join(".")
+
+    prefixed_module = "Elixir.#{module}" |> String.to_atom()
+
+    service_function = namespaces
+      |> Enum.to_list()
+      |> List.last()
+      |> String.to_atom
+
+    updated_payload = apply(prefixed_module, service_function, [token])
 
     new_token = Map.put(token, :payload, updated_payload)
 

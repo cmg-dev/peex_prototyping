@@ -6,7 +6,9 @@ defmodule Peex.Example.Test do
 
   setup do
 
-    {:ok, server_pid} = Peex.Example.ProcessSupervisor.start_link([])
+    nodes_with_config = Peex.Core.BPMNParser.parse("processes/example/example_process.bpmn")
+
+    {:ok, server_pid} = Peex.Core.ProcessSupervisor.start_link(nodes_with_config)
 
     :sys.statistics(server_pid, true)
     :sys.trace(server_pid, true)
