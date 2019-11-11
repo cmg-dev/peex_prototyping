@@ -16,9 +16,7 @@ defmodule Peex.Example.Test do
     {:ok, server: server_pid}
   end
 
-  test "supervisor restarts GenServer after it dies" do
-
-    Logger.debug "Starting test #1"
+  test "Supervisor for 'example_process.bpmn' is reaching the EndEvent" do
 
     token = %{instance_id: 100, payload: nil}
 
