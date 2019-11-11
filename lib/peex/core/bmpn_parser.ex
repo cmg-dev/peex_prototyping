@@ -118,11 +118,11 @@ defmodule Peex.Core.BPMNParser do
 
     {:ok, diagram} = File.read(file_path)
 
-    script_tasks = diagram |> parse_script_tasks()
-    service_tasks = diagram |> parse_service_tasks()
-    start_events = diagram |> parse_start_events()
-    end_events = diagram |> parse_end_events()
-    exclusive_gateways = diagram |> parse_exlusive_gateways()
+    script_tasks = parse_script_tasks(diagram)
+    service_tasks = parse_service_tasks(diagram)
+    start_events = parse_start_events(diagram)
+    end_events = parse_end_events(diagram)
+    exclusive_gateways = parse_exlusive_gateways(diagram)
 
     nodes = script_tasks ++ service_tasks ++ start_events ++ end_events ++ exclusive_gateways
 
