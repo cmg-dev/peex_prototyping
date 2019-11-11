@@ -4,19 +4,9 @@ defmodule Peex.Core.StartEvent do
 
   require Logger
 
-  # ----------------------------------------- #
-  # Client - API                              #
-  # i.e. Client calls the following functions #
-  # ----------------------------------------- #
-
   def start(start_node_id, token) do
     try_cast(start_node_id, {:on_enter, token})
   end
-
-  # ----------------------------------------- #
-  # Server - API                              #
-  # i.e. Server calls the following functions #
-  # ----------------------------------------- #
 
   def handle_cast({:on_enter, token}, state) do
 
