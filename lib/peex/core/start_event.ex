@@ -11,8 +11,6 @@ defmodule Peex.Core.StartEvent do
   def handle_cast({:on_enter, token}, state) do
     token = persist_on_start(token, state, "")
 
-    Logger.debug "#{__MODULE__} Using token -> #{inspect(token)}"
-
     next_node_id = state.next_node_id
 
     Logger.debug "#{__MODULE__} Starting next -> #{next_node_id}"
@@ -26,13 +24,11 @@ defmodule Peex.Core.StartEvent do
   end
 
   defp persist_on_start(token, state, "") do
-    token = %{ token | payload: token.payload,
-      flow_node_instance_id: state.instance_id,
-      parent_caller_instance_id: nil
-    }
-
-    Logger.debug "persist_on_start #{inspect(token)}"
-
-    Repo.insert!(token)
+    token
+    |> Map.put(:payload, token.payload)
+    |> Map.put(:flow_node_instance_id, state.instance_id)
+    |> Map.put(:flow_node_id, to_string(state.id))
+    |> Map.put(:parent_caller_instance_id, nil)
+    |> Repo.insert!
   end
 end
