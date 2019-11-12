@@ -18,7 +18,7 @@ defmodule Peex.Example.Test do
 
   test "Supervisor for 'example_process.bpmn' is reaching the EndEvent" do
 
-    token = %{instance_id: 100, payload: nil}
+    token = %Peex.Processtoken{}
 
     assert :ok == Peex.Core.StartEvent.start(:StartEvent_1, token)
 
