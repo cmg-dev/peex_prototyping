@@ -10,20 +10,13 @@ defmodule Peex.Core.ServiceTask do
     next_node_id = state.next_node_id
     topic = state.topic
 
-    namespaces = topic
-      |> to_string()
-      |> String.split(".")
+    namespaces =  _get_namespaces_from_topic(topic)
 
-    module = namespaces
-      |> Enum.drop(-1)
-      |> Enum.join(".")
+    module = _get_module_name_from_namespaces(namespaces) 
 
     prefixed_module = "Elixir.#{module}" |> String.to_atom()
 
-    service_function = namespaces
-      |> Enum.to_list()
-      |> List.last()
-      |> String.to_atom
+    service_function = _build_service_function(namespaces)
 
     updated_payload = apply(prefixed_module, service_function, [token])
 
@@ -38,4 +31,17 @@ defmodule Peex.Core.ServiceTask do
 
     {:noreply, state}
   end
+
+  defp _get_namespaces_from_topic(topic) do
+    topic |> to_string() |> String.split(".")
+  end
+
+  defp _get_module_name_from_namespaces(namespaces) do
+    namespaces |> Enum.drop(-1) |> Enum.join(".")
+  end
+
+  defp _build_service_function(namespaces) do
+    namespaces |> Enum.to_list() |> List.last() |> String.to_atom
+  end
+
 end
