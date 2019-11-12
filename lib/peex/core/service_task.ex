@@ -5,6 +5,7 @@ defmodule Peex.Core.ServiceTask do
   require Logger
 
   def handle_cast({:on_enter, token}, state) do
+    _persist_on_enter(token, state, "")
 
     next_node_id = state.next_node_id
     topic = state.topic
@@ -32,6 +33,8 @@ defmodule Peex.Core.ServiceTask do
     Logger.debug "#{__MODULE__} token: #{inspect(new_token)}"
 
     try_cast(next_node_id, {:on_enter, new_token})
+
+    _persist_on_exit(token, state, updated_payload)
 
     {:noreply, state}
   end

@@ -21,6 +21,8 @@ defmodule Peex.Core.ProcessSupervisor do
 
   def _construct_child(node, config) do
     id = to_string(config.id) |> String.to_atom()
+    
+    config = Map.put(config, :instance_id, Ecto.UUID.generate)
 
     # There is always a single node, following the current flow node.
     # But it is possible, that a node has multiple following nodes (e.g. Split Gateway)
