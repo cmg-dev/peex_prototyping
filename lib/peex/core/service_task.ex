@@ -20,14 +20,12 @@ defmodule Peex.Core.ServiceTask do
 
     updated_payload = apply(prefixed_module, service_function, [token])
 
-    new_token = Map.put(token, :payload, updated_payload)
+    { :ok, token } = _persist_on_exit(token, state, updated_payload)
 
     Logger.debug "#{__MODULE__} Starting next -> #{next_node_id}"
-    Logger.debug "#{__MODULE__} token: #{inspect(new_token)}"
+    Logger.debug "#{__MODULE__} token: #{inspect(token)}"
 
-    try_cast(next_node_id, {:on_enter, new_token})
-
-    _persist_on_exit(token, state, updated_payload)
+    try_cast(next_node_id, {:on_enter, token})
 
     {:noreply, state}
   end
