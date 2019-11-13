@@ -2,6 +2,7 @@
 defmodule Peex.Core.BPMNParser do
   import SweetXml
 
+  require Logger
   def resolve_target(sequence_node_id, diagram) do
 
     next_node_id = diagram |> xpath(~x"//bpmn:sequenceFlow[@id = \"#{sequence_node_id}\"]/@targetRef")
@@ -84,7 +85,30 @@ defmodule Peex.Core.BPMNParser do
       %{id: id, condition: condition}
     end)
 
-    next_nodes
+    sort_for_default_route(next_nodes)
+  end
+
+  @doc ~S"""
+  Sort the nodes, so that the default connections is the last element
+
+  ## Examples: 
+
+      iex> nodes = [
+        %{condition: 'token.payload.counter > 10', id: :ScriptTask_19h9wpv},
+        %{condition: nil, id: :ExclusiveGateway_0btyrc3},
+        %{condition: 'token.payload.counter > 1', id: :ScriptTask_19h9wpv},
+        %{condition: 'token.payload.counter > 10', id: :ScriptTask_20h9wv}
+      ]
+      iex> sort_for_default_route(nodes)
+      [
+        %{condition: 'token.payload.counter > 10', id: :ScriptTask_19h9wpv},
+        %{condition: 'token.payload.counter > 1', id: :ScriptTask_19h9wpv},
+        %{condition: 'token.payload.counter > 10', id: :ScriptTask_20h9wv},
+        %{condition: nil, id: :ExclusiveGateway_0btyrc3}
+      ]
+  """
+  def sort_for_default_route(nodes) do
+    Enum.sort_by(nodes, fn node -> node.condition == nil end)
   end
 
   def parse_exlusive_gateways(diagram) do
