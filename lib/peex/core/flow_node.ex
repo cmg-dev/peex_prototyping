@@ -41,14 +41,14 @@ defmodule Peex.Core.FlowNode do
         Logger.debug "#{__MODULE__} Persisting token 'on enter' in #{state.id} token #{inspect(token)}"
         Logger.debug "#{__MODULE__} Persisting token 'on enter' in #{state.id} token #{inspect(token)}"
 
-        oken 
-          |> Token.changeset(
-            %{
-              "flow_node_instance_id" => state.instance_id,
-              "flow_node_id" => to_string(state.id),
-              "parent_caller_instance_id" => nil
-            })
-          |> Repo.update
+        token 
+        |> Token.changeset(
+          %{
+            "flow_node_instance_id" => state.instance_id,
+            "flow_node_id" => to_string(state.id),
+            "parent_caller_instance_id" => nil
+          })
+        |> Repo.update
       end
 
       defp _persist_on_exit(token, state, payload \\ %{}) do
