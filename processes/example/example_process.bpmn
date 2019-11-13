@@ -31,7 +31,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0g86i8l" name="yes" sourceRef="ExclusiveGateway_1dj30yk" targetRef="ScriptTask_19h9wpb">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">token.payload.counter &gt; 10</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_1dj30yk" name="counter &#62; 3?" default="SequenceFlow_0oam4ud">
+    <bpmn:exclusiveGateway id="ExclusiveGateway_1dj30yk" name="counter &#62; 10?" default="SequenceFlow_0oam4ud">
       <bpmn:incoming>SequenceFlow_0k7xajt</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g86i8l</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0oam4ud</bpmn:outgoing>
@@ -83,7 +83,7 @@
       <bpmndi:BPMNShape id="ExclusiveGateway_1dj30yk_di" bpmnElement="ExclusiveGateway_1dj30yk" isMarkerVisible="true">
         <dc:Bounds x="625" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="619" y="133" width="62" height="14" />
+          <dc:Bounds x="616" y="133" width="68" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0g86i8l_di" bpmnElement="SequenceFlow_0g86i8l">
