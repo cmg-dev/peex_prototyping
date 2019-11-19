@@ -1,0 +1,22 @@
+
+# Use VSCode with Plugin 'REST Client'
+
+@baseUrl = http://localhost:4000
+
+
+# @name AllProcesses
+GET {{baseUrl}}/processes
+
+###
+
+@processID = {{AllProcesses.response.body.0.id}}
+
+@startEventID = {{AllProcesses.response.body.0.start_events.0}}
+
+# @name ProcessDefinition
+GET {{baseUrl}}/processes/{{processID}}/definition
+
+###
+
+# @name StartProcess
+POST {{baseUrl}}/processes/{{processID}}/start/{{startEventID}}

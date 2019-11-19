@@ -1,0 +1,13 @@
+
+.bpmn-view {
+    height: 100%;
+}
+
+.active-task:not(:global(.djs-connection)) :global(.djs-visual) > :nth-child(1) {
+    fill: rgb(78, 156, 78) !important;
+}
+
+.active-task:not(:global(.djs-connection)) :global(.djs-visual) > *:not(text) {
+    fill: rgb(78, 156, 78) !important;
+    stroke: rgb(35, 97, 35) !important;
+}

@@ -50,3 +50,39 @@ be found at [https://hexdocs.pm/peex_protyping](https://hexdocs.pm/peex_protypin
 To install all migrations, run:
 
 `mix ecto.migrate`
+
+### RabbitMQ
+
+1. Create a RabbitMQ instance using Docker
+
+   `docker run -d --hostname peex-rabbitmq --name peex-rabbitmq rabbitmq:3-alpine`
+
+### Example Server
+
+1. Go to example project folder
+
+   `cd peex_example/`
+
+1. Install dependencies
+
+   `mix deps.get`
+
+1. Start server
+
+   `mix run --no-halt`
+
+### Live Execution Tracking Client
+
+1. Go to client folder
+   
+   `cd client/`
+
+1. Install dependencies
+
+   `npm install`
+
+1. Start client
+
+   `npm start`
+
+1. Open client at http://localhost:3000

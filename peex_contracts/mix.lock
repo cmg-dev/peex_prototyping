@@ -1,0 +1,4 @@
+%{
+  "decimal": {:hex, :decimal, "1.8.0", "ca462e0d885f09a1c5a342dbd7c1dcf27ea63548c65a65e67334f4b61803822e", [:mix], [], "hexpm"},
+  "ecto": {:hex, :ecto, "3.2.5", "76c864b77948a479e18e69cc1d0f0f4ee7cced1148ffe6a093ff91eba644f0b5", [:mix], [{:decimal, "~> 1.6", [hex: :decimal, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: true]}], "hexpm"},
+}

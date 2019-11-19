@@ -1,0 +1,180 @@
+2019-11-14 21:09:49 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.Peex.Events.Repo:init/1
+    pid: <0.359.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,apply,[[{username,<<"guest">>},{password,<<"guest">>},{hostname,<<"localhost">>}],username,[]],[]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,22}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]
+    ancestors: ['Elixir.Peex.Events.Supervisor',<0.357.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.358.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 285
+  neighbours:
+2019-11-14 21:09:49 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.Peex.Events.Supervisor'}
+     Context:    start_error
+     Reason:     {badarg,[{erlang,apply,[[{username,<<"guest">>},{password,<<"guest">>},{hostname,<<"localhost">>}],username,[]],[]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,22}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.Peex.Events.Repo'},{mfargs,{'Elixir.Peex.Events.Repo',start_link,[[]]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-11-14 21:09:49 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.356.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.Peex.Events.Repo',{badarg,[{erlang,apply,[[{username,<<"guest">>},{password,<<"guest">>},{hostname,<<"localhost">>}],username,[]],[]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,22}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}},{'Elixir.Peex.Events.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.355.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.357.0>,normal}]
+    links: [<0.355.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 217
+  neighbours:
+2019-11-14 21:13:33 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.Peex.Events.Supervisor'}
+     Context:    start_error
+     Reason:     {#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"cannot convert the given list to a string.\n\nTo be converted to a string, a list must either be empty or only\ncontain the following elements:\n\n  * strings\n  * integers representing Unicode code points\n  * a list containing one of these three elements\n\nPlease check the given list or call inspect/1 to get the list representation, got:\n\n[username: \"guest\", password: \"guest\", hostname: \"localhost\"]\n">>},[{'Elixir.List',to_string,1,[{file,"lib/list.ex"},{line,912}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.Peex.Events.Repo'},{mfargs,{'Elixir.Peex.Events.Repo',start_link,[[]]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-11-14 21:13:33 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.371.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.Peex.Events.Repo',{#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"cannot convert the given list to a string.\n\nTo be converted to a string, a list must either be empty or only\ncontain the following elements:\n\n  * strings\n  * integers representing Unicode code points\n  * a list containing one of these three elements\n\nPlease check the given list or call inspect/1 to get the list representation, got:\n\n[username: \"guest\", password: \"guest\", hostname: \"localhost\"]\n">>},[{'Elixir.List',to_string,1,[{file,"lib/list.ex"},{line,912}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}},{'Elixir.Peex.Events.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.370.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.372.0>,normal}]
+    links: [<0.370.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 221
+  neighbours:
+2019-11-14 21:14:35 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.Peex.Events.Repo:init/1
+    pid: <0.359.0>
+    registered_name: []
+    exception error: {#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"cannot convert the given list to a string.\n\nTo be converted to a string, a list must either be empty or only\ncontain the following elements:\n\n  * strings\n  * integers representing Unicode code points\n  * a list containing one of these three elements\n\nPlease check the given list or call inspect/1 to get the list representation, got:\n\n[username: \"guest\", password: \"guest\", hostname: \"localhost\"]\n">>},[{'Elixir.List',to_string,1,[{file,"lib/list.ex"},{line,912}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: ['Elixir.Peex.Events.Supervisor',<0.357.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.358.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 1096
+  neighbours:
+2019-11-14 21:14:35 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.Peex.Events.Supervisor'}
+     Context:    start_error
+     Reason:     {#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"cannot convert the given list to a string.\n\nTo be converted to a string, a list must either be empty or only\ncontain the following elements:\n\n  * strings\n  * integers representing Unicode code points\n  * a list containing one of these three elements\n\nPlease check the given list or call inspect/1 to get the list representation, got:\n\n[username: \"guest\", password: \"guest\", hostname: \"localhost\"]\n">>},[{'Elixir.List',to_string,1,[{file,"lib/list.ex"},{line,912}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.Peex.Events.Repo'},{mfargs,{'Elixir.Peex.Events.Repo',start_link,[[]]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-11-14 21:14:35 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.356.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.Peex.Events.Repo',{#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"cannot convert the given list to a string.\n\nTo be converted to a string, a list must either be empty or only\ncontain the following elements:\n\n  * strings\n  * integers representing Unicode code points\n  * a list containing one of these three elements\n\nPlease check the given list or call inspect/1 to get the list representation, got:\n\n[username: \"guest\", password: \"guest\", hostname: \"localhost\"]\n">>},[{'Elixir.List',to_string,1,[{file,"lib/list.ex"},{line,912}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}},{'Elixir.Peex.Events.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.355.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.357.0>,normal}]
+    links: [<0.355.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 217
+  neighbours:
+2019-11-14 21:20:06 =SUPERVISOR REPORT====
+     Supervisor: {local,'Elixir.Peex.Events.Supervisor'}
+     Context:    start_error
+     Reason:     {#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"the Access calls for keywords expect the key to be an atom, got: \"username\"">>},[{'Elixir.Access',get,3,[{file,"lib/access.ex"},{line,292}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+     Offender:   [{pid,undefined},{id,'Elixir.Peex.Events.Repo'},{mfargs,{'Elixir.Peex.Events.Repo',start_link,[[]]}},{restart_type,permanent},{shutdown,5000},{child_type,worker}]
+
+2019-11-14 21:20:06 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.371.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'Elixir.Peex.Events.Repo',{#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"the Access calls for keywords expect the key to be an atom, got: \"username\"">>},[{'Elixir.Access',get,3,[{file,"lib/access.ex"},{line,292}]},{'Elixir.Peex.Events.Repo',init,1,[{file,"lib/repo.ex"},{line,24}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}}},{'Elixir.Peex.Events.Application',start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.370.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.372.0>,normal}]
+    links: [<0.370.0>,<0.43.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 229
+  neighbours:
+2019-11-15 15:38:18 =CRASH REPORT====
+  crasher:
+    initial call: cowboy_stream_h:request_process/3
+    pid: <0.538.0>
+    registered_name: []
+    exception exit: {{{{#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"argument error">>},[{erlang,apply,[{'Elixir.Peex.Core.StartEvent',#{id => "StartEvent_1",next_node_id => "ScriptTask_0qrmmga"}},id,[]],[]},{'Elixir.Peex.API.Router','-do_match/4-fun-3-',1,[{file,"lib/router.ex"},{line,21}]},{'Elixir.Enum','-map/2-lists^map/1-0-',2,[{file,"lib/enum.ex"},{line,1336}]},{'Elixir.Peex.API.Router','-do_match/4-fun-4-',2,[{file,"lib/router.ex"},{line,21}]},{'Elixir.Peex.API.Router',dispatch,2,[{file,"lib/plug/router.ex"},{line,259}]},{'Elixir.Peex.API.Router',plug_builder_call,2,[{file,"lib/router.ex"},{line,1}]},{'Elixir.Plug.Cowboy.Handler',init,2,[{file,"lib/plug/cowboy/handler.ex"},{line,12}]},{cowboy_handler,execute,2,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_handler.erl"},{line,41}]}]},{'Elixir.Peex.API.Router',call,[#{'__struct__' => 'Elixir.Plug.Conn',adapter => {'Elixir.Plug.Cowboy.Conn',#{bindings => #{},body_length => 0,cert => undefined,has_body => false,headers => #{<<"accept-encoding">> => <<"gzip">>,<<"connection">> => <<"close">>,<<"host">> => <<"localhost:4000">>,<<"user-agent">> => <<"vscode-restclient">>},host => <<"localhost">>,host_info => undefined,method => <<"GET">>,path => <<"/processes">>,path_info => undefined,peer => {{127,0,0,1},51659},pid => <0.537.0>,port => 4000,qs => <<>>,ref => 'Elixir.Peex.API.Router.HTTP',scheme => <<"http">>,sock => {{127,0,0,1},4000},streamid => 1,version => 'HTTP/1.1'}},assigns => #{},before_send => [],body_params => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => body_params},cookies => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => cookies},halted => false,host => <<"localhost">>,method => <<"GET">>,owner => <0.538.0>,params => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => params},path_info => [<<"processes">>],path_params => #{},port => 4000,private => #{},query_params => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => query_params},query_string => <<>>,remote_ip => {127,0,0,1},req_cookies => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => cookies},req_headers => [{<<"accept-encoding">>,<<"gzip">>},{<<"connection">>,<<"close">>},{<<"host">>,<<"localhost:4000">>},{<<"user-agent">>,<<"vscode-restclient">>}],request_path => <<"/processes">>,resp_body => nil,resp_cookies => #{},resp_headers => [{<<"cache-control">>,<<"max-age=0, private, must-revalidate">>}],scheme => http,script_name => [],secret_key_base => nil,state => unset,status => nil},[]]}},[{'Elixir.Plug.Cowboy.Handler',exit_on_error,4,[{file,"lib/plug/cowboy/handler.ex"},{line,39}]},{'Elixir.Plug.Cowboy.Handler',init,2,[{file,"lib/plug/cowboy/handler.ex"},{line,18}]},{cowboy_handler,execute,2,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_handler.erl"},{line,41}]},{cowboy_stream_h,execute,3,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_stream_h.erl"},{line,320}]},{cowboy_stream_h,request_process,3,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_stream_h.erl"},{line,302}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]},[{'Elixir.Plug.Cowboy.Handler',exit_on_error,4,[{file,"lib/plug/cowboy/handler.ex"},{line,39}]},{'Elixir.Plug.Cowboy.Handler',init,2,[{file,"lib/plug/cowboy/handler.ex"},{line,18}]},{cowboy_handler,execute,2,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_handler.erl"},{line,41}]},{cowboy_stream_h,execute,3,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_stream_h.erl"},{line,320}]},{cowboy_stream_h,request_process,3,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_stream_h.erl"},{line,302}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.537.0>,<0.435.0>,<0.434.0>,'Elixir.Peex.API.Application',<0.432.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.537.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 17731
+    stack_size: 27
+    reductions: 163152
+  neighbours:
+2019-11-15 15:38:18 =ERROR REPORT====
+Ranch listener 'Elixir.Peex.API.Router.HTTP', connection process <0.537.0>, stream 1 had its request process <0.538.0> exit with reason {{#{'__exception__' => true,'__struct__' => 'Elixir.ArgumentError',message => <<"argument error">>},[{erlang,apply,[{'Elixir.Peex.Core.StartEvent',#{id => "StartEvent_1",next_node_id => "ScriptTask_0qrmmga"}},id,[]],[]},{'Elixir.Peex.API.Router','-do_match/4-fun-3-',1,[{file,"lib/router.ex"},{line,21}]},{'Elixir.Enum','-map/2-lists^map/1-0-',2,[{file,"lib/enum.ex"},{line,1336}]},{'Elixir.Peex.API.Router','-do_match/4-fun-4-',2,[{file,"lib/router.ex"},{line,21}]},{'Elixir.Peex.API.Router',dispatch,2,[{file,"lib/plug/router.ex"},{line,259}]},{'Elixir.Peex.API.Router',plug_builder_call,2,[{file,"lib/router.ex"},{line,1}]},{'Elixir.Plug.Cowboy.Handler',init,2,[{file,"lib/plug/cowboy/handler.ex"},{line,12}]},{cowboy_handler,execute,2,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_handler.erl"},{line,41}]}]},{'Elixir.Peex.API.Router',call,[#{'__struct__' => 'Elixir.Plug.Conn',adapter => {'Elixir.Plug.Cowboy.Conn',#{bindings => #{},body_length => 0,cert => undefined,has_body => false,headers => #{<<"accept-encoding">> => <<"gzip">>,<<"connection">> => <<"close">>,<<"host">> => <<"localhost:4000">>,<<"user-agent">> => <<"vscode-restclient">>},host => <<"localhost">>,host_info => undefined,method => <<"GET">>,path => <<"/processes">>,path_info => undefined,peer => {{127,0,0,1},51659},pid => <0.537.0>,port => 4000,qs => <<>>,ref => 'Elixir.Peex.API.Router.HTTP',scheme => <<"http">>,sock => {{127,0,0,1},4000},streamid => 1,version => 'HTTP/1.1'}},assigns => #{},before_send => [],body_params => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => body_params},cookies => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => cookies},halted => false,host => <<"localhost">>,method => <<"GET">>,owner => <0.538.0>,params => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => params},path_info => [<<"processes">>],path_params => #{},port => 4000,private => #{},query_params => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => query_params},query_string => <<>>,remote_ip => {127,0,0,1},req_cookies => #{'__struct__' => 'Elixir.Plug.Conn.Unfetched',aspect => cookies},req_headers => [{<<"accept-encoding">>,<<"gzip">>},{<<"connection">>,<<"close">>},{<<"host">>,<<"localhost:4000">>},{<<"user-agent">>,<<"vscode-restclient">>}],request_path => <<"/processes">>,resp_body => nil,resp_cookies => #{},resp_headers => [{<<"cache-control">>,<<"max-age=0, private, must-revalidate">>}],scheme => http,script_name => [],secret_key_base => nil,state => unset,status => nil},[]]}} and stacktrace [{'Elixir.Plug.Cowboy.Handler',exit_on_error,4,[{file,"lib/plug/cowboy/handler.ex"},{line,39}]},{'Elixir.Plug.Cowboy.Handler',init,2,[{file,"lib/plug/cowboy/handler.ex"},{line,18}]},{cowboy_handler,execute,2,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_handler.erl"},{line,41}]},{cowboy_stream_h,execute,3,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_stream_h.erl"},{line,320}]},{cowboy_stream_h,request_process,3,[{file,"/Users/okti/Dev/Stuff/peex_modules/peex_api/deps/cowboy/src/cowboy_stream_h.erl"},{line,302}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]
+2019-11-15 16:35:50 =ERROR REPORT====
+** Generic server <0.371.0> terminating 
+** Last message in was {socket_error,timeout}
+** When Server state == {state,amqp_network_connection,{state,#Port<0.24>,<<"client 127.0.0.1:51946 -> 127.0.0.1:5672">>,10,<0.374.0>,131072,<0.370.0>,undefined,false},<0.373.0>,{amqp_params_network,<<"guest">>,<<"guest">>,<<"/">>,"localhost",5672,0,0,10,50000,none,[fun amqp_auth_mechanisms:plain/3,fun amqp_auth_mechanisms:amqplain/3],[],[]},2047,[{<<"capabilities">>,table,[{<<"publisher_confirms">>,bool,true},{<<"exchange_exchange_bindings">>,bool,true},{<<"basic.nack">>,bool,true},{<<"consumer_cancel_notify">>,bool,true},{<<"connection.blocked">>,bool,true},{<<"consumer_priorities">>,bool,true},{<<"authentication_failure_close">>,bool,true},{<<"per_consumer_qos">>,bool,true},{<<"direct_reply_to">>,bool,true}]},{<<"cluster_name">>,longstr,<<"rabbit@peex-rabbit">>},{<<"copyright">>,longstr,<<"Copyright (c) 2007-2019 Pivotal Software, Inc.">>},{<<"information">>,longstr,<<"Licensed under the MPL 1.1. Website: https://rabbitmq.com">>},{<<"platform">>,longstr,<<"Erlang/OTP 22.1.7">>},{<<"product">>,longstr,<<"RabbitMQ">>},{<<"version">>,longstr,<<"3.8.1">>}],none,false}
+** Reason for termination ==
+** {socket_error,timeout}
+2019-11-15 16:35:50 =CRASH REPORT====
+  crasher:
+    initial call: amqp_gen_connection:init/1
+    pid: <0.371.0>
+    registered_name: []
+    exception exit: {{socket_error,timeout},[{gen_server,handle_common_reply,8,[{file,"gen_server.erl"},{line,751}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.369.0>,amqp_sup,<0.357.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.369.0>]
+    dictionary: [{process_name,{amqp_gen_connection,<<"client 127.0.0.1:51946 -> 127.0.0.1:5672">>}},{gen_server_call_timeout,60000}]
+    trap_exit: true
+    status: running
+    heap_size: 4185
+    stack_size: 27
+    reductions: 14081
+  neighbours:
+2019-11-15 16:35:50 =SUPERVISOR REPORT====
+     Supervisor: {<0.369.0>,amqp_connection_sup}
+     Context:    child_terminated
+     Reason:     {socket_error,timeout}
+     Offender:   [{pid,<0.371.0>},{name,connection},{mfargs,{amqp_gen_connection,start_link,[<0.370.0>,{amqp_params_network,<<"guest">>,<<"guest">>,<<"/">>,"localhost",5672,0,0,10,50000,none,[fun amqp_auth_mechanisms:plain/3,fun amqp_auth_mechanisms:amqplain/3],[],[]}]}},{restart_type,intrinsic},{shutdown,brutal_kill},{child_type,worker}]
+
+2019-11-15 16:35:50 =SUPERVISOR REPORT====
+     Supervisor: {<0.369.0>,amqp_connection_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.371.0>},{name,connection},{mfargs,{amqp_gen_connection,start_link,[<0.370.0>,{amqp_params_network,<<"guest">>,<<"guest">>,<<"/">>,"localhost",5672,0,0,10,50000,none,[fun amqp_auth_mechanisms:plain/3,fun amqp_auth_mechanisms:amqplain/3],[],[]}]}},{restart_type,intrinsic},{shutdown,brutal_kill},{child_type,worker}]
+
