@@ -39,7 +39,6 @@ defmodule Peex.Core.FlowNode do
 
       defp _persist_on_enter(token, state, caller) do
         Logger.debug "#{__MODULE__} Persisting token 'on enter' in #{state.id} token #{inspect(token)}"
-        Logger.debug "#{__MODULE__} Persisting token 'on enter' in #{state.id} token #{inspect(token)}"
 
         token 
         |> Token.changeset(
@@ -55,7 +54,7 @@ defmodule Peex.Core.FlowNode do
         Logger.debug "#{__MODULE__} Persisting token 'on exit' in #{state.id}"
 
         token
-        |> Token.changeset( 
+        |> Token.changeset(
           %{
             "payload" => payload,
           })
