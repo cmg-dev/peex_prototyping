@@ -22,24 +22,22 @@
     <bpmn:scriptTask id="ScriptTask_19h9wpb" name="Clear Counter">
       <bpmn:incoming>SequenceFlow_0g86i8l</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0jpw591</bpmn:outgoing>
-      <bpmn:script>result = nil</bpmn:script>
+      <bpmn:script>result = %{}</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:serviceTask id="ServiceTask_1ly7xt9" name="Increment Counter" camunda:type="external" camunda:topic="Peex.Example.Service.increment_counter">
       <bpmn:incoming>SequenceFlow_1q80ujv</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0k7xajt</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0g86i8l" name="yes" sourceRef="ExclusiveGateway_1dj30yk" targetRef="ScriptTask_19h9wpb">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">token.payload.counter &gt; 3</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">token.payload.counter &gt; 10</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_1dj30yk" name="counter &#62; 3?">
+    <bpmn:exclusiveGateway id="ExclusiveGateway_1dj30yk" name="counter &#62; 10?" default="SequenceFlow_0oam4ud">
       <bpmn:incoming>SequenceFlow_0k7xajt</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g86i8l</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0oam4ud</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_1q80ujv" sourceRef="ExclusiveGateway_0btyrc3" targetRef="ServiceTask_1ly7xt9" />
-    <bpmn:sequenceFlow id="SequenceFlow_0oam4ud" name="no" sourceRef="ExclusiveGateway_1dj30yk" targetRef="ExclusiveGateway_0btyrc3">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">token.payload.counter &lt;= 3</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_0oam4ud" sourceRef="ExclusiveGateway_1dj30yk" targetRef="ExclusiveGateway_0btyrc3" />
     <bpmn:exclusiveGateway id="ExclusiveGateway_0btyrc3">
       <bpmn:incoming>SequenceFlow_1ur0hhw</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0oam4ud</bpmn:incoming>
@@ -85,7 +83,7 @@
       <bpmndi:BPMNShape id="ExclusiveGateway_1dj30yk_di" bpmnElement="ExclusiveGateway_1dj30yk" isMarkerVisible="true">
         <dc:Bounds x="625" y="152" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="619" y="133" width="62" height="14" />
+          <dc:Bounds x="616" y="133" width="68" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0g86i8l_di" bpmnElement="SequenceFlow_0g86i8l">

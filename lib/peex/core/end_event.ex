@@ -6,6 +6,8 @@ defmodule Peex.Core.EndEvent do
 
   def handle_cast({:on_enter, token}, state) do
 
+    _persist_on_enter(token, state, "")
+
     Logger.debug "#{__MODULE__} End event reached"
     Logger.debug "#{__MODULE__} token: #{inspect(token)}"
 

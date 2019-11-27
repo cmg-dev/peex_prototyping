@@ -6,19 +6,23 @@ defmodule Peex.Core.ScriptTask do
 
   def handle_cast({:on_enter, token}, state) do
 
-    next_node_id = state.next_node_id
-    script = state.script
+    _persist_on_enter(token, state, "")
 
+    next_node_id = state.next_node_id
+
+    script = state.script
     evaluation_data = [token: token]
 
-    {new_payload, _} = Code.eval_string(script, evaluation_data)
+    {updated_payload, _} = Code.eval_string(script, evaluation_data)
 
-    new_token = Map.put(token, :payload, new_payload)
+    # new_token = Map.put(token, :payload, new_payload)
+
+    { :ok, token } = _persist_on_exit(token, state, updated_payload)
 
     Logger.debug "#{__MODULE__} Starting next -> #{next_node_id}"
-    Logger.debug "#{__MODULE__} token: #{inspect(new_token)}"
+    Logger.debug "#{__MODULE__} token: #{inspect(token)}"
 
-    try_cast(next_node_id, {:on_enter, new_token})
+    _try_cast(next_node_id, {:on_enter, token})
 
     {:noreply, state}
   end
