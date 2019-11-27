@@ -53,9 +53,9 @@ To install all migrations, run:
 
 ### RabbitMQ
 
-1. Create a RabbitMQ instance using Docker
+1. Create a RabbitMQ instance using Docker; we use the standard AMQP ports
 
-   `docker run -d --hostname peex-rabbitmq --name peex-rabbitmq rabbitmq:3-alpine`
+   `docker run --name peex-rabbitmq -p 5672:5672 -d rabbitmq:3-alpine`
 
 ### Example Server
 
