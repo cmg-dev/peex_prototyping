@@ -31,6 +31,10 @@ be found at [https://hexdocs.pm/peex_protyping](https://hexdocs.pm/peex_protypin
 
    `psql -h localhost -p 5432 -U user --password`
 
+1. (Optional): Run the migrations
+
+  See [section about Migrations](#migrations)
+
 1. Select database and query
 
    `\c peex_protyping`
