@@ -13,17 +13,15 @@ defmodule Peex.Core.ScriptTask do
     script = state.script
     evaluation_data = [token: token]
 
-    {updated_payload, _} = Code.eval_string(script, evaluation_data)
-
-    # new_token = Map.put(token, :payload, new_payload)
+    { updated_payload, _ } = Code.eval_string(script, evaluation_data)
 
     { :ok, token } = _persist_on_exit(token, state, updated_payload)
 
     Logger.debug "#{__MODULE__} Starting next -> #{next_node_id}"
     Logger.debug "#{__MODULE__} token: #{inspect(token)}"
 
-    _try_cast(next_node_id, {:on_enter, token})
+    _try_cast(next_node_id, { :on_enter, token })
 
-    {:noreply, state}
+    { :noreply, state }
   end
 end
