@@ -3,7 +3,7 @@ defmodule Contracts.Processtoken do
 
   import Ecto.Changeset
 
-  @changable_fields [:flow_node_instance_id, :flow_node_id, :parent_caller_instance_id, :payload]
+  @changable_fields [:flow_node_instance_id, :flow_node_id, :parent_caller_instance_id, :payload, :updated_at]
 
   schema "processtokens" do
     field :process_instance_id, Ecto.UUID, default: to_string(Ecto.UUID.generate())
@@ -19,8 +19,14 @@ defmodule Contracts.Processtoken do
   end
 
   def changeset(token, params \\ %{}) do
+    params = _append_timestamp(params)
+
     token
     |> cast(params, @changable_fields)
+  end
+
+  defp _append_timestamp(params) do
+    Map.put(params, "updated_at", DateTime.truncate(DateTime.utc_now, :second))
   end
 
 end
