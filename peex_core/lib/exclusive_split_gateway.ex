@@ -14,6 +14,7 @@ defmodule Peex.Core.ExclusiveSplitGateway do
 
     next_node = _get_next_node(next_nodes, evaluation_data)
 
+    Logger.debug "#{inspect(next_node)}"
     next_node_id = next_node.id
 
     if next_node_id do
@@ -33,7 +34,7 @@ defmodule Peex.Core.ExclusiveSplitGateway do
   end
 
   defp _get_next_node(nodes, data) do
-    nodes
+    next_node = nodes
     |> Enum.find(fn node ->
         case Code.eval_string(node.condition, data) do
           # a successful match to the condition, will result in true
@@ -44,7 +45,6 @@ defmodule Peex.Core.ExclusiveSplitGateway do
           _ -> false
         end
       end)
-
-    node
+    next_node
   end
 end
