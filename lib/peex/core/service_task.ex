@@ -26,7 +26,7 @@ defmodule Peex.Core.ServiceTask do
     Logger.debug "#{__MODULE__} Starting next -> #{next_node_id}"
     Logger.debug "#{__MODULE__} token: #{inspect(token)}"
 
-    try_cast(next_node_id, {:on_enter, token})
+    _try_cast(next_node_id, {:on_enter, token})
 
     {:noreply, state}
   end

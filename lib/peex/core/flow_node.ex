@@ -15,7 +15,7 @@ defmodule Peex.Core.FlowNode do
         GenServer.start_link(
           __MODULE__,
           state,
-          name: global_server_name(flow_node_id))
+          name: _global_server_name(flow_node_id))
       end
 
       @impl true
@@ -23,12 +23,12 @@ defmodule Peex.Core.FlowNode do
         {:ok, state}
       end
 
-      defp global_server_name(server_name) do
+      defp _global_server_name(server_name) do
         {:global, {:servername, server_name}}
       end
 
-      defp try_cast(server_name, message) do
-        case GenServer.whereis(global_server_name(server_name)) do
+      defp _try_cast(server_name, message) do
+        case GenServer.whereis(_global_server_name(server_name)) do
           nil ->
             {:error, :invalid_server}
 

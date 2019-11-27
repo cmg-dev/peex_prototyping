@@ -23,7 +23,7 @@ defmodule Peex.Core.ExclusiveSplitGateway do
 
       { :ok, token } = _persist_on_exit(token, state, token.payload)
 
-      try_cast(next_node_id, {:on_enter, token})
+      _try_cast(next_node_id, {:on_enter, token})
 
     else
       Logger.error "#{__MODULE__} No matching branch found"
