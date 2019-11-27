@@ -31,6 +31,12 @@ be found at [https://hexdocs.pm/peex_protyping](https://hexdocs.pm/peex_protypin
 
    `psql -h localhost -p 5432 -U user --password`
 
+1. (Optional): Create the database
+
+   To setup the database use Ecto like this:
+
+   `mix ecto.create`
+
 1. (Optional): Run the migrations
 
   See [section about Migrations](#migrations)
