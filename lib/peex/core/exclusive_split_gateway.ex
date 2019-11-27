@@ -33,7 +33,7 @@ defmodule Peex.Core.ExclusiveSplitGateway do
   end
 
   defp _get_next_node(nodes, data) do
-    node = nodes
+    nodes
     |> Enum.find(fn node ->
         case Code.eval_string(node.condition, data) do
           # a successful match to the condition, will result in true
