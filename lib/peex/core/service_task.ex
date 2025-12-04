@@ -13,7 +13,7 @@ defmodule Peex.Core.ServiceTask do
 
     namespaces =  _get_namespaces_from_topic(topic)
 
-    module = _get_module_name_from_namespaces(namespaces) 
+    module = _get_module_name_from_namespaces(namespaces)
 
     prefixed_module = "Elixir.#{module}" |> String.to_atom()
 
