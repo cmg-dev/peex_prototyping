@@ -23,6 +23,8 @@ defmodule Peex.Core.FlowNode do
         {:ok, state}
       end
 
+      defoverridable init: 1
+
       defp _global_server_name(server_name) do
         {:global, {:servername, server_name}}
       end
@@ -54,12 +56,18 @@ defmodule Peex.Core.FlowNode do
       defp _persist_on_exit(token, state, payload \\ %{}) do
         Logger.debug "#{__MODULE__} Persisting token 'on exit' in #{state.id}"
 
+        markers = token.markers
+
         token
-        |> Token.changeset( 
+        |> Token.changeset(
           %{
             "payload" => payload,
           })
         |> Repo.update
+        |> case do
+          {:ok, updated_token} -> {:ok, %{updated_token | markers: markers}}
+          error -> error
+        end
       end
     end
   end

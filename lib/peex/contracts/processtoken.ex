@@ -16,6 +16,7 @@ defmodule Contracts.Processtoken do
     field :identity, :string
     field :parent_caller_instance_id, Ecto.UUID
     field :payload, :map, default: %{}
+    field :markers, {:array, :map}, virtual: true, default: []
   end
 
   def changeset(token, params \\ %{}) do
