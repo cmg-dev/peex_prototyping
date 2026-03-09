@@ -21,6 +21,16 @@ be found at [https://hexdocs.pm/peex_protyping](https://hexdocs.pm/peex_protypin
 
 ## Developer Setup
 
+### Docker
+
+Create an image with:
+
+`docker build -t peex-prototype:latest .`
+
+Create and start a container for that image with:
+
+`docker run -d peex-prototype:latest`
+
 ### Database
 
 1. Create the database using Docker

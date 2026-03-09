@@ -25,3 +25,4 @@ peex_protyping-*.tar
 # VS Code folders
 /.elixir_ls/
 /.vscode/
+.DS_Store
