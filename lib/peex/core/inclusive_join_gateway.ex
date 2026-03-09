@@ -40,17 +40,20 @@ defmodule Peex.Core.InclusiveJoinGateway do
   # Check if the join should activate for the given process instance.
   defp _maybe_activate(state, process_instance_id) do
     inst = state.join_state[process_instance_id]
+    _maybe_activate_for_instance(inst, state, process_instance_id)
+  end
 
-    cond do
-      inst.expected == nil ->
-        {:noreply, state}
+  defp _maybe_activate_for_instance(%{expected: nil} = _inst, state, _process_instance_id) do
+    {:noreply, state}
+  end
 
-      length(inst.arrived) + inst.not_coming_count >= inst.expected ->
-        _activate(state, process_instance_id, inst)
+  defp _maybe_activate_for_instance(%{arrived: arrived, not_coming_count: not_coming_count, expected: expected} = inst, state, process_instance_id)
+       when length(arrived) + not_coming_count >= expected do
+    _activate(state, process_instance_id, inst)
+  end
 
-      true ->
-        {:noreply, state}
-    end
+  defp _maybe_activate_for_instance(_inst, state, _process_instance_id) do
+    {:noreply, state}
   end
 
   # All expected tokens accounted for — merge payloads and continue.
